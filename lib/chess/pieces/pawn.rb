@@ -8,23 +8,21 @@ module Chess
 
       def can_move?(vector, kill=false)
         if color == "White"
-          if vector.start_position.split(//).last == "2" &&
-             (vector.dx == 0 && (vector.dy <= -2 && vector.dy < 0))
+          if vector.start_y == 2 && vector.dx == 0 && vector.dy == -2
             true
-          elsif vector.dx == 0 && (vector.dy >= -1 && vector.dy < 0) && kill == false
+          elsif vector.dx == 0 && vector.dy == -1 && kill == false
             true
-          elsif (vector.dx == -1 || vector.dx == 1) && vector.dy == -1 && kill # diagonal kill
+          elsif vector.dx.abs == 1 && vector.dy == -1 && kill # diagonal kill
             true
           else
             false
           end
         else # color == 'Black'
-          if vector.start_position.split(//).last == "7" &&
-             (vector.dx == 0 && (vector.dy <= 2 && vector.dy > 0))
+          if vector.start_position[1] == "7" && vector.dx == 0 && vector.dy == 2
             true
-          elsif vector.dx == 0 && (vector.dy <= 1 && vector.dy > 0) && kill
-            false
-          elsif (vector.dx == -1 || vector.dx == 1) && vector.dy == 1 && kill
+          elsif vector.dx == 0 && vector.dy == 1 && kill == false
+            true
+          elsif vector.dx.abs == 1 && vector.dy == 1 && kill
             true
           else
             false

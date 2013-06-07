@@ -187,18 +187,14 @@ module Chess
       vector = Chess::Vector.new(from, to)
 
       #setting kill --> if there's something there, it must be of the opposite color
-      if get_piece(to)
-        kill=true
-      else
-        kill=false
-      end
+      kill = !!get_piece(to)
 
       # if the vector is illegal for the piece
-      if original_piece.can_move?(vector, kill) == false
+      unless original_piece.can_move?(vector, kill)
         return false
+      end
 
-      # knight move
-      elsif original_piece.can_move?(vector, kill) && original_piece.can_jump?
+      if original_piece.can_jump? || clear_path(vector)
         if kill
           remove_piece(to)
         end
@@ -211,19 +207,6 @@ module Chess
         end
         return true
 
-      # test to see if pieces are in the vector array
-      elsif original_piece.can_move?(vector, kill) && clear_path(vector)
-        if kill
-          remove_piece(to)
-        end
-        remove_piece(from)
-        set_piece(to, original_piece)
-        if original_piece.color == 'White'
-          @turn = 'Black'
-        else
-          @turn = 'White'
-        end
-        return true
       else
         return false
       end
@@ -231,9 +214,9 @@ module Chess
 
     def clear_path(vector)
       path = vector.to_a
-      path.each do |any|
-        if get_piece(any)
-          return false unless any == path.last
+      path.each do |it|
+        if get_piece(it)
+          return false unless it == path.last
         end
       end
       return true

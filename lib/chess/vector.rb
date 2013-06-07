@@ -24,7 +24,7 @@
 #
 module Chess
   class Vector
-    attr_reader :start_position, :end_position, :dx, :dy
+    attr_reader :start_position, :end_position, :dx, :dy, :start_y
     CHAR_TO_INTEGER_HASH = {
       "a" => 1,
       "b" => 2,
@@ -73,7 +73,7 @@ module Chess
 
     def to_a
       @vector_array ||= if adjacent_position == @end_position
-                          return [@end_position]
+                          [@end_position]
                         else
                           [adjacent_position] + Chess::Vector.new(adjacent_position, @end_position).to_a
                         end
