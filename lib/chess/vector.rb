@@ -24,7 +24,7 @@
 #
 module Chess
   class Vector
-    attr_accessor :start_position, :end_position
+    attr_reader :start_position, :end_position, :dx, :dy
     CHAR_TO_INTEGER_HASH = {
       "a" => 1,
       "b" => 2,
@@ -39,28 +39,12 @@ module Chess
     def initialize(start_position, end_position)
       @start_position = start_position
       @end_position = end_position
-    end
-
-    def dy
-      start_y = @start_position.split(//).last.to_i
-      end_y = @end_position.split(//).last.to_i
-      start_y - end_y
-    end
-
-    def dx
-      start_x_char = @start_position.split(//).first
-      start_x_int = character_to_integer(start_x_char)
-      end_x_char = @end_position.split(//).first
-      end_x_int = character_to_integer(end_x_char)
-      end_x_int - start_x_int
-    end
-
-    def character_to_integer(character)
-      CHAR_TO_INTEGER_HASH.each_key do |key|
-        if key == character
-          return CHAR_TO_INTEGER_HASH[character]
-        end
-      end
+      @start_x = CHAR_TO_INTEGER_HASH[@start_position[0]]
+      @start_y = @start_position[1].to_i
+      @end_x = CHAR_TO_INTEGER_HASH[@end_position[0]]
+      @end_y = @end_position[1].to_i
+      @dx = @end_x - @start_x
+      @dy = @start_y - @end_y
     end
 
     def adjacent?
@@ -72,42 +56,27 @@ module Chess
     end
 
     def adjacent_position
-      if dx == 0 && dy > 0
-        @start_position.split(//).first + (@start_position.split(//).last.to_i - 1).to_s
-      elsif dx == 0 && dy < 0
-        @start_position.split(//).first + (@start_position.split(//).last.to_i + 1).to_s
-      elsif dx > 0 && dy == 0
-        start_x_char = @start_position.split(//).first
-        adjacent_x = character_to_integer(start_x_char) + 1
-        CHAR_TO_INTEGER_HASH.key(adjacent_x) + @start_position.split(//).last
-      elsif dx < 0 && dy == 0
-        start_x_char = @start_position.split(//).first
-        adjacent_x = character_to_integer(start_x_char) - 1
-        CHAR_TO_INTEGER_HASH.key(adjacent_x) + @start_position.split(//).last
-      else
-        start_x_char = @start_position.split(//).first
-        if dx > 0
-          new_x = character_to_integer(start_x_char) + 1
-          adjacent_x = CHAR_TO_INTEGER_HASH.key(new_x)
-        else
-          new_x = character_to_integer(start_x_char) - 1
-          adjacent_x = CHAR_TO_INTEGER_HASH.key(new_x)
-        end
-        if dy > 0
-          adjacent_y = (@start_position.split(//).last.to_i - 1).to_s
-        else
-          adjacent_y = (@start_position.split(//).last.to_i + 1).to_s
-        end
-        adjacent_x + adjacent_y
-      end
+      CHAR_TO_INTEGER_HASH.key(adjacent_x) + adjacent_y.to_s
+    end
+
+    def adjacent_x
+      return @start_x if dx == 0
+      return @start_x + 1 if dx > 0
+      return @start_x - 1 if dx < 0
+    end
+
+    def adjacent_y
+      return @start_y if dy == 0
+      return @start_y - 1 if dy > 0
+      return @start_y + 1 if dy < 0
     end
 
     def to_a
-      if adjacent_position == @end_position
-        return [@end_position]
-      else
-        [adjacent_position] + Chess::Vector.new(adjacent_position, @end_position).to_a
-      end
+      @vector_array ||= if adjacent_position == @end_position
+                          return [@end_position]
+                        else
+                          [adjacent_position] + Chess::Vector.new(adjacent_position, @end_position).to_a
+                        end
     end
   end
 end
