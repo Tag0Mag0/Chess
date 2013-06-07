@@ -11,13 +11,14 @@ module Chess
         "x"
       end
 
-      def can_move?(vector)
+      def can_move?(vector, kill=false)
         raise "#{self.class} has not implemented the can_move? method."
       end
 
       def can_jump?
         false
       end
+
     end
   end
 end

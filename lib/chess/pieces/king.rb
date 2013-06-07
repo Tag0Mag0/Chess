@@ -1,14 +1,13 @@
 module Chess
   module Pieces
-    class Rook < Chess::Pieces::Base
+    class King < Chess::Pieces::Base
 
       def to_s
-        'R'
+        'K'
       end
 
       def can_move?(vector, kill=false)
-        if (vector.dx == 0 && vector.dy.abs > 0) ||
-           (vector.dy == 0 && vector.dx.abs > 0)
+        if vector.dx.abs <= 1 && vector.dy.abs <= 1
           true
         else
           false

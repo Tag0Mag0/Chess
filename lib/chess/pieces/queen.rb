@@ -1,13 +1,14 @@
 module Chess
   module Pieces
-    class Rook < Chess::Pieces::Base
+    class Queen < Chess::Pieces::Base
 
       def to_s
-        'R'
+        'Q'
       end
 
       def can_move?(vector, kill=false)
-        if (vector.dx == 0 && vector.dy.abs > 0) ||
+        if (vector.dx.abs == vector.dy.abs) ||
+           (vector.dx == 0 && vector.dy.abs > 0) ||
            (vector.dy == 0 && vector.dx.abs > 0)
           true
         else

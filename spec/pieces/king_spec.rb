@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe "Chess::Pieces::King" do
   let(:king) { Chess::Pieces::King.new('Black') }
-  before(:each) { pending "King class does not exist yet." }  # Delete this line once you have defined Chess::Pieces::King.
 
   describe "#can_move?(vector)" do
     it "can move 1 up and 1 over" do

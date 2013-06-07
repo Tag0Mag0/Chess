@@ -3,8 +3,7 @@ require 'spec_helper'
 describe "Chess::Pieces::Pawn" do
   let(:white_pawn) { Chess::Pieces::Pawn.new('White') }
   let(:black_pawn) { Chess::Pieces::Pawn.new('Black') }
-
-  before(:each) { pending "Pawn does not exist yet" }   # Delete this line once you have defined Chess::Pieces::Pawn.
+  let!(:board) { Chess::Board.new }
 
   describe "#can_move?(vector, kill = false)" do
 
@@ -57,7 +56,7 @@ describe "Chess::Pieces::Pawn" do
       vector = Chess::Vector.new("c4", "b3")
       black_pawn.can_move?(vector).should == false
     end
-    
+
     it "can move diagonally if they are making a kill" do
       vector = Chess::Vector.new("c4", "d5")
       white_pawn.can_move?(vector, true).should == true

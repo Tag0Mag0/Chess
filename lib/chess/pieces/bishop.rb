@@ -6,8 +6,12 @@ module Chess
         'B'
       end
 
-      def can_move?(vector)
-        false
+      def can_move?(vector, kill=false)
+        if vector.dx.abs == vector.dy.abs
+          true
+        else
+          false
+        end
       end
 
     end

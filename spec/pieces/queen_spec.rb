@@ -3,8 +3,6 @@ require 'spec_helper'
 describe "Chess::Pieces::Queen" do
   let(:queen) { Chess::Pieces::Queen.new('White') }
 
-  before(:each) { pending "Queen does not exist yet." }   # Delete this line once you have defined Chess::Pieces::Queen.
-
   describe "#can_move?(vector)" do
     it "can move 3 over and 3 down" do
       vector = Chess::Vector.new("b4", "e7")

@@ -15,7 +15,7 @@ describe Chess::Position do
       Chess::Position.new("a3").x.should == 1
     end
 
-    it "stores numberical y coordinate for the row" do
+    it "stores numerical y coordinate for the row" do
       Chess::Position.new("d6").y.should == -6
     end
 
@@ -67,7 +67,7 @@ describe Chess::Position do
     it "returns false if the second character is not in the range 1-8" do
       Chess::Position.valid?("c9").should == false
     end
-    
+
     it "accepts a4" do
       Chess::Position.valid?("a4").should == true
     end
