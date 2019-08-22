@@ -43,20 +43,3 @@ rules, and Chess::Vector, which breaks the move down into its X and Y coordinate
 The pieces need to look at the Vector to see if their move is legal, and the 
 move rules are written in terms of dx and dy, which are available as properties
 on the vector.
-
-=== Your Assignment
-To complete this game, you'll have to do three things.
-1. Fill in the Vector class. This class models a piece's movement across
-   the board, and answer questions like "How far left or right is this piece trying to move?"
-   or "How much up or down is the piece trying to move?"
-2. Finish defining the chess pieces themselves.
-3. Write the #move method on the Board class. 
-
-The test suite is already written.  It has about 90 tests, most of which
-are currently broken.
-
-There is also a command-line interface to the game (bin/ruby-chess), which you can use to play it
-as you build out more functionality. Right now it will render the board, but all the
-pieces except the Rooks and the Bishops are just placeholders, and will appear as an X.
-If you try to move them, they won't move and you'll be told the move was invalid.
-As you define the different pieces and their movement rules, the game will become playable.
