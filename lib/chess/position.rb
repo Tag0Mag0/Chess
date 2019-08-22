@@ -33,9 +33,9 @@ module Chess
       def valid?(position_string)
         begin
           raise_error_for(position_string)
-          return true
+          true
         rescue
-          return false
+          false
         end
       end
 
