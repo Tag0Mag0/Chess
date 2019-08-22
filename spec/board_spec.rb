@@ -10,6 +10,7 @@ class Chess::Pieces::Octopus < Chess::Pieces::Base
 end
 
 describe Chess::Board do
+  # HI
   let(:board) { Chess::Board.new }
 
   it "can generate a string representation of a new board" do
@@ -41,7 +42,7 @@ board
       board.set_piece("c6", white_octopus)
       board.move("c6", "c6").should == false
     end
-    
+
     it "complains if you can't jump and you try to move through a piece" do
       board.set_piece("c6", white_octopus)
       board.set_piece("d6", white_pawn)
@@ -93,7 +94,7 @@ board
     it "returns nil if there's nothing there" do
       board.get_piece("e4").should == nil
     end
-    
+
     it "is idempotent" do
       pawn = board.get_piece("a2")
       pawn.should == board.get_piece("a2")
