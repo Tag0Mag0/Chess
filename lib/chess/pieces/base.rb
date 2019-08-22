@@ -8,7 +8,7 @@ module Chess
       end
 
       def to_s
-        "x"
+        "x".freeze
       end
 
       def can_move?(vector, kill=false)
@@ -18,7 +18,6 @@ module Chess
       def can_jump?
         false
       end
-
     end
   end
 end
