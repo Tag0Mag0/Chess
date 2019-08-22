@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/Tag0Mag0/Chess/compare/v1.3.0...v1.3.1) (2019-08-22)
+
+
+### Bug Fixes
+
+* **bug:** this is a bugfix too! ([fe04321](https://github.com/Tag0Mag0/Chess/commit/fe04321))
+
 ## [1.3.0](https://github.com/Tag0Mag0/Chess/compare/v1.2.0...v1.3.0) (2019-08-22)
 
 
