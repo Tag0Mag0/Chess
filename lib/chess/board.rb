@@ -80,6 +80,7 @@ module Chess
         "g" => nil,
         "h" => nil
       }
+
       @board = {
         1 => row.dup,
         2 => row.dup,
@@ -90,13 +91,16 @@ module Chess
         7 => row.dup,
         8 => row.dup
       }
+
       WHITE_PIECES.each do |position, piece_class|
         set_piece(position, piece_class.new("White"))
       end
+
       BLACK_PIECES.each do |position, piece_class|
         set_piece(position, piece_class.new("Black"))
       end
-      @turn = PLAYERS[0]  # 'White'
+
+      @turn = PLAYERS.first  # 'White'
       self
     end
 
