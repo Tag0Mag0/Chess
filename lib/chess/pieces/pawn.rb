@@ -6,7 +6,7 @@ module Chess
         'p'
       end
 
-      def can_move?(vector, kill=false)
+      def can_move?(vector, kill)
         if color == "White"
           if vector.start_y == 2 && vector.dx == 0 && vector.dy == -2
             true
