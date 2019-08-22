@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/Tag0Mag0/Chess/compare/v1.2.0...v1.3.0) (2019-08-22)
+
+
+### Features
+
+* **feature:** added a new feature ([cab2ea6](https://github.com/Tag0Mag0/Chess/commit/cab2ea6))
+
 ## [1.2.0](https://github.com/Tag0Mag0/Chess/compare/v1.1.1...v1.2.0) (2019-08-22)
 
 
