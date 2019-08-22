@@ -164,6 +164,7 @@ module Chess
     #
 
     def move(from, to)
+      kill = false
       original_piece = get_piece(from)
 
       # there is no piece
