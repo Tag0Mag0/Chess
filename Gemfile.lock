@@ -13,7 +13,7 @@ GEM
     debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.4)
     rainbow (1.1.4)
-    rake (10.0.4)
+    rake (13.0.1)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
